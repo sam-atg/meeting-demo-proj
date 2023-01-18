@@ -29,7 +29,6 @@ module.exports = async () => {
   return withMDX({
     reactStrictMode: true,
     poweredByHeader: false,
-    basePath: '/meeting-demo-proj',
     compiler: {
       emotion: true
     },
