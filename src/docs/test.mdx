@@ -1,0 +1,72 @@
+# Hello, world!
+
+```twoslash include main
+/// <reference types="node" />
+
+const a = 1
+// - 1
+const b = 2
+// - 2
+const c= 3
+```
+
+Let's talk a bit about `a`:
+
+```ts twoslash
+// @include: main-1
+// ---cut---
+
+import { writeFileSync } from 'fs';
+writeFileSync('myfile.txt', '// TODO');
+```
+
+`a` can be added to another number
+
+```ts twoslash
+// @include: main-1
+// ---cut---
+const nextA = a + 13;
+```
+
+You can see what happens when you add `a + b`
+
+```ts twoslash
+// @include: main-2
+// ---cut---
+const result = a + b;
+//    ^?
+```
+
+Finally here is `c`:
+
+```ts twoslash
+// @include: main
+// ---cut---
+c.toString();
+```
+
+```tsx twoslash
+/// <reference types="jest" />
+import '@testing-library/dom/types';
+import '@testing-library/jest-dom';
+// ---cut---
+import { vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+describe('example', () => {
+  it('is an example', async () => {
+    const onClickMock = vi.fn();
+    render(<div />);
+    expect(screen.getByText(/submit/i)).toBeInTheDocument();
+    const button = screen.getByRole('button', {
+      name: /hello world/i,
+      suggest: true /* set for query recommendations */
+    });
+    // logs a link to https://testing-playground.com/ with whats currently rendered
+    screen.logTestingPlaygroundURL();
+    await userEvent.click(button);
+    expect(onClickMock).toHaveBeenCalled();
+  });
+});
+```
